@@ -4,6 +4,7 @@ import com.leokom.games.chess.engine.Move;
 import com.leokom.games.chess.engine.PieceType;
 import com.leokom.games.chess.engine.Position;
 import com.leokom.games.chess.player.legal.brain.common.Evaluator;
+import com.leokom.games.chess.player.legal.brain.common.EvaluatorFactoryCreator;
 import com.leokom.games.chess.player.legal.brain.common.EvaluatorType;
 import com.leokom.games.chess.player.legal.brain.denormalized.DenormalizedEvaluatorFactory;
 import com.leokom.games.commons.brain.normalized.range.SymmetricalNormalizedRange;
@@ -21,7 +22,7 @@ import static com.leokom.games.chess.player.legal.brain.internal.common.Material
 class MaterialEvaluator implements Evaluator {
 	@Override
 	public double evaluateMove( Position position, Move move ) {
-		double materialAdvantage = new DenormalizedEvaluatorFactory().get( EvaluatorType.MATERIAL ).evaluateMove( position, move );
+		double materialAdvantage = EvaluatorFactoryCreator.getEvaluatorFactory("denormalized").get( EvaluatorType.MATERIAL ).evaluateMove( position, move );
 		return RANGE.normalize( materialAdvantage );
 	}
 

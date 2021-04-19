@@ -3,6 +3,7 @@ package com.leokom.games.chess.player.legal.brain.normalized;
 import com.leokom.games.chess.engine.Move;
 import com.leokom.games.chess.engine.Position;
 import com.leokom.games.chess.player.legal.brain.common.Evaluator;
+import com.leokom.games.chess.player.legal.brain.common.EvaluatorFactoryCreator;
 import com.leokom.games.chess.player.legal.brain.common.EvaluatorType;
 import com.leokom.games.chess.player.legal.brain.denormalized.DenormalizedEvaluatorFactory;
 import com.leokom.games.commons.brain.normalized.range.SymmetricalNormalizedRange;
@@ -16,6 +17,6 @@ class AttackEvaluator implements Evaluator {
 
 	@Override
 	public double evaluateMove( Position position, Move move ) {
-		return RANGE.normalize(	new DenormalizedEvaluatorFactory().get( EvaluatorType.ATTACK ).evaluateMove( position, move ) );
+		return RANGE.normalize(	EvaluatorFactoryCreator.getEvaluatorFactory("denormalized").get( EvaluatorType.ATTACK ).evaluateMove( position, move ) );
 	}
 }

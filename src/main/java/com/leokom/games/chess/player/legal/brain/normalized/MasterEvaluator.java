@@ -4,6 +4,7 @@ import com.leokom.games.chess.engine.Move;
 import com.leokom.games.chess.engine.Position;
 import com.leokom.games.chess.player.legal.brain.common.Evaluator;
 import com.leokom.games.chess.player.legal.brain.common.EvaluatorFactory;
+import com.leokom.games.chess.player.legal.brain.common.EvaluatorFactoryCreator;
 import com.leokom.games.chess.player.legal.brain.common.EvaluatorType;
 import com.leokom.games.chess.player.legal.brain.internal.common.EvaluatorWeights;
 import org.apache.logging.log4j.LogManager;
@@ -37,8 +38,8 @@ public class MasterEvaluator implements Evaluator {
 	 * @param weights evaluator -> weight
 	 */
 	MasterEvaluator( EvaluatorWeights weights ) {
-		//standard evaluator factory
-		this( weights, new NormalizedEvaluatorFactory() );
+		//standard evaluator factory\
+		this( weights, EvaluatorFactoryCreator.getEvaluatorFactory("normalized") );
 	}
 
 	MasterEvaluator( EvaluatorWeights evaluatorWeights, EvaluatorFactory evaluatorFactory ) {
