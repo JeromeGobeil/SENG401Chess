@@ -4,6 +4,7 @@ import com.leokom.games.chess.engine.PieceType;
 import com.leokom.games.chess.engine.Position;
 import com.leokom.games.chess.engine.PositionBuilder;
 import com.leokom.games.chess.engine.Side;
+import com.leokom.games.chess.player.legal.brain.common.EvaluatorFactoryCreator;
 import com.leokom.games.chess.player.legal.brain.common.EvaluatorType;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +33,7 @@ public class NormalizedEvaluatorsCorrectnessTest {
 
 	@Test
 	public void allMovesInCorrectRangeFromInitialPosition() {
-		new NormalizedEvaluatorAssert( new NormalizedEvaluatorFactory().get( evaluatorType ) )
+		new NormalizedEvaluatorAssert( EvaluatorFactoryCreator.getEvaluatorFactory("normalized").get( evaluatorType ) )
 				.assertAllMovesEvaluatedInNormalizedRange( Position.getInitialPosition() );
 	}
 
@@ -45,7 +46,7 @@ public class NormalizedEvaluatorsCorrectnessTest {
 				.setSide( Side.WHITE )
 				.build();
 
-		new NormalizedEvaluatorAssert( new NormalizedEvaluatorFactory().get( evaluatorType ) )
+		new NormalizedEvaluatorAssert( EvaluatorFactoryCreator.getEvaluatorFactory("normalized").get( evaluatorType ) )
 				.assertAllMovesEvaluatedInNormalizedRange( position );
 	}
 

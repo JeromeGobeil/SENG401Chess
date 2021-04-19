@@ -3,6 +3,7 @@ package com.leokom.games.chess.player.legal.brain.normalized;
 import com.google.common.collect.Maps;
 import com.leokom.games.chess.player.legal.brain.common.Evaluator;
 import com.leokom.games.chess.player.legal.brain.common.EvaluatorFactory;
+import com.leokom.games.chess.player.legal.brain.common.EvaluatorFactoryCreator;
 import com.leokom.games.chess.player.legal.brain.common.EvaluatorType;
 import com.leokom.games.chess.player.legal.brain.denormalized.DenormalizedEvaluatorFactory;
 
@@ -15,7 +16,7 @@ import java.util.Map;
  */
 public class NormalizedEvaluatorFactory implements EvaluatorFactory {
 	private static final Map<EvaluatorType, Evaluator> EVALUATORS;
-	private static final DenormalizedEvaluatorFactory DENORMALIZED_EVALUATOR_FACTORY = new DenormalizedEvaluatorFactory();
+	private static final DenormalizedEvaluatorFactory DENORMALIZED_EVALUATOR_FACTORY = (DenormalizedEvaluatorFactory)EvaluatorFactoryCreator.getEvaluatorFactory("denormalized");
 
 	static {
 		//we keep references to instances of EVALUATORS here

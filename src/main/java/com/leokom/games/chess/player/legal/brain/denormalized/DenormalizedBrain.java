@@ -8,6 +8,7 @@ import com.leokom.games.chess.player.legal.brain.internal.common.EvaluatorWeight
 import com.leokom.games.chess.player.legal.brain.common.Brain;
 import com.leokom.games.chess.player.legal.brain.common.Evaluator;
 import com.leokom.games.chess.player.legal.brain.common.EvaluatorFactory;
+import com.leokom.games.chess.player.legal.brain.common.EvaluatorFactoryCreator;
 import com.leokom.games.chess.player.legal.brain.common.EvaluatorType;
 import com.leokom.games.chess.player.legal.brain.normalized.NormalizedBrain;
 import org.apache.logging.log4j.LogManager;
@@ -25,7 +26,7 @@ public class DenormalizedBrain implements Brain {
 	private static final double DEFAULT_FOR_EQUAL_NOT_IN_RANGE = 0.5;
 	private final Logger logger = LogManager.getLogger();
 
-	private final EvaluatorFactory evaluatorFactory = new DenormalizedEvaluatorFactory();
+	private final EvaluatorFactory evaluatorFactory = EvaluatorFactoryCreator.getEvaluatorFactory("denormalized");
 	private final EvaluatorWeights evaluatorWeights;
 
 	public DenormalizedBrain() {

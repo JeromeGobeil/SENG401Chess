@@ -20,8 +20,8 @@ public abstract class EvaluatorTestCase {
 
 	@Parameterized.Parameters
 	public static Iterable< EvaluatorFactory > parameters() {
-		return Arrays.asList( new NormalizedEvaluatorFactory(),
-				new DenormalizedEvaluatorFactory() );
+		return Arrays.asList( EvaluatorFactoryCreator.getEvaluatorFactory("normalized"),
+		EvaluatorFactoryCreator.getEvaluatorFactory("denormalized") );
 	}
 
 	@Parameterized.Parameter
